@@ -8,7 +8,7 @@ const ListItem = ({ image, title, subTitle }) => {
     return (
         <View style={styles.container}>
             <Image style={styles.image} source={image} />
-            <View >
+            <View>
                 <AppText style={styles.title}>{title}</AppText>
                 <AppText style={styles.subTitle}>{subTitle}</AppText>
             </View>
