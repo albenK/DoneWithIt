@@ -1,12 +1,13 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import WelcomeScreen from './app/screens/WelcomeScreen';
 import ViewImageScreen from './app/screens/ViewImageScreen';
+import AppText from './app/components/AppText';
 
 const App = () => {
   return (
-    <ViewImageScreen/>
+   <WelcomeScreen/>
   );
 }
 
