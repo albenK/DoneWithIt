@@ -22,7 +22,8 @@ const initialMessages = [
 ];
 
 const MessagesScreen = () => {
-    const [messages, setMessages ] = useState(initialMessages);
+    const [ messages, setMessages ] = useState(initialMessages);
+    const [ isRefreshing, setIsRefreshing ] = useState(false);
 
     const handleDelete = (message) => {
         // TODO: Delete the message from server.
@@ -48,6 +49,18 @@ const MessagesScreen = () => {
                     );
                 }}
                 ItemSeparatorComponent={ListItemSeperator}
+                refreshing={isRefreshing}
+                onRefresh={() => {
+                    console.log('onRefresh running');
+                    setMessages([
+                        {
+                            id: 2,
+                            title: 'T2',
+                            description: 'D2',
+                            image: require('../assets/mosh.jpg'),
+                        }
+                    ]);
+                }}
             />
         </AppScreen>
     );
