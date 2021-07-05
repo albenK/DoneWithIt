@@ -51,6 +51,7 @@ const MessagesScreen = () => {
                 ItemSeparatorComponent={ListItemSeperator}
                 refreshing={isRefreshing}
                 onRefresh={() => {
+                    // TODO: Refresh data from server.
                     console.log('onRefresh running');
                     setMessages([
                         {
