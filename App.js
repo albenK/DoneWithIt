@@ -7,10 +7,13 @@ import MessagesScreen from './app/screens/MessagesScreen';
 import ListingsScreen from './app/screens/ListingsScreen';
 import AppIcon from './app/components/AppIcon';
 import ListItem from './app/components/ListItem';
+import AppTextInput from './app/components/AppTextInput';
 
 const App = () => {
   return (
-    <ListingsScreen/>
+    <AppScreen>
+      <AppTextInput icon="email" placeholder="Username"/>
+    </AppScreen>
   );
 }
 
