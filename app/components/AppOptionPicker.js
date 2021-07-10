@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-import { Button, Modal, Dimensions, TouchableWithoutFeedback, View, StyleSheet } from 'react-native';
+import { Button, FlatList, Modal, TouchableWithoutFeedback, View, StyleSheet } from 'react-native';
 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import AppText from './AppText';
 import AppScreen from './AppScreen';
+import AppOptionPickerItem from './AppOptionPickerItem';
 import DEFAULT_STYLES from '../config/styles';
 
-const AppOptionPicker = ({ icon, placeholder }) => {
-    const [ isModalVisible, setIsModalVisible] = useState(false);
+const AppOptionPicker = ({ icon, items, selectedItem, onSelectItem, placeholder }) => {
+    const [ isModalVisible, setIsModalVisible ] = useState(false);
 
     return (
         <>
-
             <TouchableWithoutFeedback onPress={() => setIsModalVisible(true)}>
                 <View style={styles.pickerButton}>
                     {!!icon && <MaterialCommunityIcons
@@ -21,7 +21,7 @@ const AppOptionPicker = ({ icon, placeholder }) => {
                         color={DEFAULT_STYLES.colors.medium}
                         style={styles.icon}
                     />}
-                    <AppText style={styles.text}>{placeholder}</AppText>
+                    <AppText style={styles.text}>{selectedItem ? selectedItem.label : placeholder}</AppText>
                     <MaterialCommunityIcons
                         name="chevron-down"
                         size={20}
@@ -34,6 +34,19 @@ const AppOptionPicker = ({ icon, placeholder }) => {
                 <View style={styles.pickerContainer}>
                     <AppScreen>
                         <Button title="CLOSE" onPress={() => setIsModalVisible(false)}/>
+                        <FlatList 
+                            data={items}
+                            keyExtractor={item => item.value.toString()}
+                            renderItem={({ item }) => (
+                                <AppOptionPickerItem
+                                    label={item.label}
+                                    onPress={() => {
+                                        setIsModalVisible(false);
+                                        onSelectItem(item);
+                                    }}
+                                />)
+                            }
+                        />
                     </AppScreen>
                 </View>
             </Modal>
