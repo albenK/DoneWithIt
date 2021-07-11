@@ -10,10 +10,11 @@ import ListItem from './app/components/ListItem';
 import AppTextInput from './app/components/AppTextInput';
 import AppOptionPicker from './app/components/AppOptionPicker';
 import LoginScreen from './app/screens/LoginScreen';
+import RegisterScreen from './app/screens/RegisterScreen';
 
 const App = () => {
   return (
-    <LoginScreen/>
+    <RegisterScreen/>
   );
 }
 
