@@ -5,10 +5,8 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 
 import AppScreen from '../components/AppScreen';
-import AppText from '../components/AppText';
-import AppTextInput from '../components/AppTextInput';
 import AppButton from '../components/AppButton';
-import AppErrorMessage from '../components/AppErrorMessage';
+import AppFormField from '../components/AppFormField';
 
 const validationSchema = Yup.object().shape({
     email: Yup.string().required().email().label('Email'),
@@ -27,31 +25,27 @@ const LoginScreen = () => {
 
             >
                 {
-                    ({ handleChange, handleSubmit, errors, setFieldTouched, touched }) => {
+                    ({ handleSubmit }) => {
                         return (
                             <>
-                                <AppTextInput
+                                <AppFormField
+                                    name="email"
                                     icon="email"
                                     placeholder="Email"
                                     keyboardType="email-address"
-                                    onChangeText={handleChange('email')}
-                                    onBlur={() => setFieldTouched('email')}
                                     autoCapitalize="none"
                                     autoCorrect={false}
                                     textContentType="emailAddress"
                                 />
-                                <AppErrorMessage visible={touched.email} errorMessage={errors.email}/>
-                                <AppTextInput
+                                <AppFormField
+                                    name="password"
                                     icon="lock"
                                     placeholder="Password"
-                                    onChangeText={handleChange('password')}
-                                    onBlur={() => setFieldTouched('password')}
                                     secureTextEntry
                                     autoCapitalize="none"
                                     autoCorrect={false}
                                     textContentType="password"
                                 />
-                                 <AppErrorMessage visible={touched.password} errorMessage={errors.password}/>
                                 <AppButton
                                     label="Login"
                                     onPress={handleSubmit}
