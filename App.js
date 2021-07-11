@@ -11,10 +11,11 @@ import AppTextInput from './app/components/AppTextInput';
 import AppOptionPicker from './app/components/AppOptionPicker';
 import LoginScreen from './app/screens/LoginScreen';
 import RegisterScreen from './app/screens/RegisterScreen';
+import ListingEditScreen from './app/screens/ListingEditScreen';
 
 const App = () => {
   return (
-    <RegisterScreen/>
+    <ListingEditScreen/>
   );
 }
 
