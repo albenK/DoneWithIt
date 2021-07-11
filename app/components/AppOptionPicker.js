@@ -21,7 +21,7 @@ const AppOptionPicker = ({ icon, items, selectedItem, onSelectItem, placeholder 
                         color={DEFAULT_STYLES.colors.medium}
                         style={styles.icon}
                     />}
-                    <AppText style={styles.text}>{selectedItem ? selectedItem.label : placeholder}</AppText>
+                    <AppText style={[styles.text, { color: selectedItem ? DEFAULT_STYLES.text.color : DEFAULT_STYLES.colors.medium}]}>{selectedItem ? selectedItem.label : placeholder}</AppText>
                     <MaterialCommunityIcons
                         name="chevron-down"
                         size={20}
