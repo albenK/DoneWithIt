@@ -8,7 +8,7 @@ import AppScreen from './AppScreen';
 import AppOptionPickerItem from './AppOptionPickerItem';
 import DEFAULT_STYLES from '../config/styles';
 
-const AppOptionPicker = ({ icon, items, selectedItem, onSelectItem, placeholder, width = '100%' }) => {
+const AppOptionPicker = ({ icon, items, numberOfColumns = 1, onSelectItem, PickerItemComponent = AppOptionPickerItem, placeholder, selectedItem, width = '100%' }) => {
     const [ isModalVisible, setIsModalVisible ] = useState(false);
 
     return (
@@ -31,37 +31,30 @@ const AppOptionPicker = ({ icon, items, selectedItem, onSelectItem, placeholder,
             </TouchableWithoutFeedback>
 
             <Modal visible={isModalVisible} animationType="slide">
-                <View style={styles.pickerModalContainer}>
-                    <AppScreen>
-                        <Button title="CLOSE" onPress={() => setIsModalVisible(false)}/>
-                        <FlatList 
-                            data={items}
-                            keyExtractor={item => item.value.toString()}
-                            renderItem={({ item }) => (
-                                <AppOptionPickerItem
-                                    label={item.label}
-                                    onPress={() => {
-                                        setIsModalVisible(false);
-                                        onSelectItem(item);
-                                    }}
-                                />)
-                            }
+                <AppScreen>
+                    <Button title="CLOSE" onPress={() => setIsModalVisible(false)}/>
+                    <FlatList 
+                        data={items}
+                        key={'_'}
+                        keyExtractor={item => '_' + item.value.toString()}
+                        numColumns={numberOfColumns}
+                        renderItem={({ item }) => (
+                            <PickerItemComponent
+                                item={item}
+                                onPress={() => {
+                                    setIsModalVisible(false);
+                                    onSelectItem(item);
+                                }}
+                            />)
+                        }
                         />
                     </AppScreen>
-                </View>
             </Modal>
         </>
     );
 };
 
 const styles = StyleSheet.create({
-    pickerModalContainer: {
-        width: '100%',
-        height: '100%',
-        paddingHorizontal: 15,
-        paddingBottom: 15,
-        backgroundColor: DEFAULT_STYLES.colors.white,
-    },
     pickerButton: {
         flexDirection: 'row',
         alignItems: 'center',

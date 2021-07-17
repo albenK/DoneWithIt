@@ -4,6 +4,7 @@ import { StyleSheet, TouchableWithoutFeedback, View, Keyboard } from 'react-nati
 import * as Yup from 'yup';
 
 import AppScreen from '../components/AppScreen';
+import AppCategoryPickerItem from '../components/AppCategoryPickerItem';
 import { AppForm, AppFormField, AppFormOptionPicker, AppSubmitButton } from '../components/forms';
 
 const validationSchema = Yup.object().shape({
@@ -14,9 +15,15 @@ const validationSchema = Yup.object().shape({
 });
 
 const CATEGORIES = [
-    { label: 'Furniture', value: 0 },
-    { label: 'Clothing', value: 1 },
-    { label: 'Camera', value: 2 },
+    { label: 'Furniture', value: 0, backgroundColor: '#fc5c65', icon: 'floor-lamp' },
+    { label: 'Cars', value: 1 , backgroundColor: '#fd9644', icon: 'car'},
+    { label: 'Cameras', value: 2 , backgroundColor: '#fed330', icon: 'camera'},
+    { label: 'Games', value: 3 , backgroundColor: '#26de81', icon: 'cards'},
+    { label: 'Clothing', value: 4, backgroundColor: '#2bcbba', icon: 'shoe-heel' },
+    { label: 'Sports', value: 5 , backgroundColor: '#45aaf2', icon: 'basketball'},
+    { label: 'Movies & Music', value: 6 , backgroundColor: '#4b7bec', icon: 'headphones'},
+    { label: 'Books', value: 7 , backgroundColor: 'lightgreen', icon: 'book-open-variant'},
+    { label: 'Other', value: 8 , backgroundColor: 'grey', icon: 'help-box'},
 ];
 const ListingEditScreen = () => {
     return (
@@ -41,8 +48,10 @@ const ListingEditScreen = () => {
                             width={120}
                         />
                         <AppFormOptionPicker
-                            name="category"
                             items={CATEGORIES}
+                            name="category"
+                            numberOfColumns={3}
+                            PickerItemComponent={AppCategoryPickerItem}
                             placeholder="Category"
                             width="50%"
                         />
