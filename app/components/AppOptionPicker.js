@@ -8,13 +8,13 @@ import AppScreen from './AppScreen';
 import AppOptionPickerItem from './AppOptionPickerItem';
 import DEFAULT_STYLES from '../config/styles';
 
-const AppOptionPicker = ({ icon, items, selectedItem, onSelectItem, placeholder }) => {
+const AppOptionPicker = ({ icon, items, selectedItem, onSelectItem, placeholder, width = '100%' }) => {
     const [ isModalVisible, setIsModalVisible ] = useState(false);
 
     return (
         <>
             <TouchableWithoutFeedback onPress={() => setIsModalVisible(true)}>
-                <View style={styles.pickerButton}>
+                <View style={[styles.pickerButton, { width }]}>
                     {!!icon && <MaterialCommunityIcons
                         name={icon}
                         size={20}
@@ -30,8 +30,8 @@ const AppOptionPicker = ({ icon, items, selectedItem, onSelectItem, placeholder 
                 </View>
             </TouchableWithoutFeedback>
 
-            <Modal visible={isModalVisible} transparent={true} animationType="slide">
-                <View style={styles.pickerContainer}>
+            <Modal visible={isModalVisible} animationType="slide">
+                <View style={styles.pickerModalContainer}>
                     <AppScreen>
                         <Button title="CLOSE" onPress={() => setIsModalVisible(false)}/>
                         <FlatList 
@@ -55,7 +55,7 @@ const AppOptionPicker = ({ icon, items, selectedItem, onSelectItem, placeholder 
 };
 
 const styles = StyleSheet.create({
-    pickerContainer: {
+    pickerModalContainer: {
         width: '100%',
         height: '100%',
         paddingHorizontal: 15,
@@ -65,7 +65,6 @@ const styles = StyleSheet.create({
     pickerButton: {
         flexDirection: 'row',
         alignItems: 'center',
-        width: '100%',
         padding: 15,
         borderRadius: 25,
         marginVertical: 10,
