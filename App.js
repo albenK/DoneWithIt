@@ -16,10 +16,7 @@ import AppCard from './app/components/AppCard';
 
 const App = () => {
   return (
-    <AppScreen>
-      <AppCard title="Some kjgnfjkgnfg fgkfjgnfjgjf gfdjgdngjk gjkfngjkdgnf fdgnfjkgnfjkgfg f gfjgjfkngfgfjngkfngkjfgffkfdngkfgjkfngf gkfgifgnfdig k12984793284 krghr"
-      subTitle="gnfg,fg"/>
-    </AppScreen>
+     <MessagesScreen/>
   );
 }
 
