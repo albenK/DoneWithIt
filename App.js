@@ -12,10 +12,14 @@ import AppOptionPicker from './app/components/AppOptionPicker';
 import LoginScreen from './app/screens/LoginScreen';
 import RegisterScreen from './app/screens/RegisterScreen';
 import ListingEditScreen from './app/screens/ListingEditScreen';
+import AppCard from './app/components/AppCard';
 
 const App = () => {
   return (
-    <MessagesScreen/>
+    <AppScreen>
+      <AppCard title="Some kjgnfjkgnfg fgkfjgnfjgjf gfdjgdngjk gjkfngjkdgnf fdgnfjkgnfjkgfg f gfjgjfkngfgfjngkfngkjfgffkfdngkfgjkfngf gkfgifgnfdig k12984793284 krghr"
+      subTitle="gnfg,fg"/>
+    </AppScreen>
   );
 }
 
