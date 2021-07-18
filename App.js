@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import AppScreen from './app/components/AppScreen';
 import AccountScreen from './app/screens/AccountScreen';
@@ -14,9 +14,26 @@ import RegisterScreen from './app/screens/RegisterScreen';
 import ListingEditScreen from './app/screens/ListingEditScreen';
 import AppCard from './app/components/AppCard';
 
+import * as ImagePicker from 'expo-image-picker';
+
 const App = () => {
+
+const requestPermission = async () => {
+  const result = await ImagePicker.requestMediaLibraryPermissionsAsync();
+
+  if (!result.granted) {
+    alert('Please enable permissions to access the library.');
+  }
+};
+
+  useEffect(() => {
+    requestPermission();
+  }, []);
+
   return (
-     <ListingEditScreen/>
+    <AppScreen>
+
+    </AppScreen>
   );
 }
 
