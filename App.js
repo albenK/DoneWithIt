@@ -13,12 +13,22 @@ import LoginScreen from './app/screens/LoginScreen';
 import RegisterScreen from './app/screens/RegisterScreen';
 import ListingEditScreen from './app/screens/ListingEditScreen';
 import AppCard from './app/components/AppCard';
+import AppImageInput from './app/components/AppImageInput';
+import { Button } from 'react-native';
+
+import * as ImagePicker from 'expo-image-picker';
 
 const App = () => {
+  const [ imageUri, setImageUri ] = useState();
 
+  const selectImage = async () => {
+    const result = await ImagePicker.launchImageLibraryAsync();
+    setImageUri(result.uri);
+  };
   return (
     <AppScreen>
-      <ListingEditScreen />
+      <Button title="Select Image" onPress={selectImage}/>
+      <AppImageInput imageUri={imageUri} onChangeImage={setImageUri}/>
     </AppScreen>
   );
 }
