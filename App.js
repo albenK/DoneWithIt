@@ -16,21 +16,54 @@ import AppCard from './app/components/AppCard';
 import AppImageInput from './app/components/AppImageInput';
 
 import AppImageInputList from './app/components/AppImageInputList';
+import AppText from './app/components/AppText';
+
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { Button } from 'react-native';
+
+const Link = () => {
+  const navigation = useNavigation();
+  return (
+    <Button title="CLICK" onPress={() => navigation.navigate('TweetDetails')}/>
+  );
+};
+
+const Tweets = ({ navigation }) => {
+    return (
+      <AppScreen>
+        <AppText>Tweets</AppText>
+        <Link/>
+      </AppScreen>
+    );
+};
+
+const TweetDetails = () => {
+  return (
+    <AppScreen>
+      <AppText>Tweet Details</AppText>
+    </AppScreen>
+  );
+};  
+
+const Stack = createStackNavigator();
+const StackNavigator = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Tweets" component={Tweets}/>
+      <Stack.Screen name="TweetDetails" component={TweetDetails}/>
+    </Stack.Navigator>
+  );
+};
+
 
 
 const App = () => {
-  const [ imageUris, setImageUris ] = useState([]);
-
-  const handleAdd = (uri) => {
-    setImageUris([ ...imageUris, uri ]);
-  };
-
-  const handleRemove = (uri) => {
-    setImageUris(imageUris.filter(imageUri => imageUri !== uri));
-  };
 
   return (
-    <ListingEditScreen/>
+      <NavigationContainer>
+        <StackNavigator/>
+      </NavigationContainer>
   );
 }
 
