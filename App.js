@@ -30,9 +30,7 @@ const App = () => {
   };
 
   return (
-    <AppScreen>
-      <AppImageInputList imageUris={imageUris} onAddImage={handleAdd} onRemoveImage={handleRemove}/>
-    </AppScreen>
+    <ListingEditScreen/>
   );
 }
 
