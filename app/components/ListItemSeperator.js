@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
-import COLORS from '../config/colors';
+import APP_COLORS from '../config/colors';
 
 const ListItemSeperator = () => {
     return (
@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     seperator: {
         width: '100%',
         height: 1,
-        backgroundColor: COLORS.light,
+        backgroundColor: APP_COLORS.light,
     }
 });
 

@@ -3,7 +3,7 @@ import { View, StyleSheet, Image, TouchableOpacity, Alert } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import COLORS from '../config/colors';
+import APP_COLORS from '../config/colors';
 
 const AppImageInput = ({ imageUri, onChangeImage }) => {
 
@@ -49,7 +49,7 @@ const AppImageInput = ({ imageUri, onChangeImage }) => {
   return (
     <TouchableOpacity onPress={handlePress}>
       <View style={styles.container}>
-        { !imageUri && <MaterialCommunityIcons color={COLORS.medium} name="camera" size={40}/> }
+        { !imageUri && <MaterialCommunityIcons color={APP_COLORS.medium} name="camera" size={40}/> }
         { imageUri && <Image style={styles.image} source={{ uri: imageUri }}/>}
       </View>
     </TouchableOpacity>
@@ -59,7 +59,7 @@ const AppImageInput = ({ imageUri, onChangeImage }) => {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: COLORS.light,
+    backgroundColor: APP_COLORS.light,
     borderRadius: 15,
     height: 100,
     justifyContent: 'center',

@@ -1,4 +1,4 @@
-export default {
+const APP_COLORS = {
     primary: '#fc5c65',
     secondary: '#4ecdc4',
     black: '#000',
@@ -8,3 +8,4 @@ export default {
     dark : '#0c0c0c',
     danger: '#ff5252'
 };
+export default APP_COLORS;

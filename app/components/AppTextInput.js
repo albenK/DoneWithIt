@@ -11,11 +11,11 @@ const AppTextInput = ({ icon, width = '100%', ...otherProps }) => {
             {!!icon && <MaterialCommunityIcons
                 name={icon}
                 size={20}
-                color={DEFAULT_STYLES.colors.medium}
+                color={DEFAULT_STYLES.APP_COLORS.medium}
                 style={styles.icon}
             />}
             <TextInput
-                placeholderTextColor={DEFAULT_STYLES.colors.medium}
+                placeholderTextColor={DEFAULT_STYLES.APP_COLORS.medium}
                 style={styles.textInput} { ...otherProps }
             />
         </View>
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
         padding: 15,
         borderRadius: 25,
         marginVertical: 10,
-        backgroundColor: DEFAULT_STYLES.colors.light,
+        backgroundColor: DEFAULT_STYLES.APP_COLORS.light,
     },
     icon: {
         marginRight: 10,

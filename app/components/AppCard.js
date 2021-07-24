@@ -3,7 +3,7 @@ import { View, Image, StyleSheet} from 'react-native';
 
 import AppText from './AppText';
 
-import COLORS from '../config/colors';
+import APP_COLORS from '../config/colors';
 
 const AppCard = ({ title, subTitle, image }) => {
     return (
@@ -20,7 +20,7 @@ const AppCard = ({ title, subTitle, image }) => {
 const styles = StyleSheet.create({
     card: {
         borderRadius: 15,
-        backgroundColor: COLORS.white,
+        backgroundColor: APP_COLORS.white,
         marginBottom: 20,
         overflow: 'hidden'
     },
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         height: 200,
     },
     subTitle: {
-        color: COLORS.secondary,
+        color: APP_COLORS.secondary,
         fontWeight: 'bold',
     },
     title: {

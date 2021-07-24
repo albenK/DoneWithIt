@@ -4,7 +4,7 @@ import { FlatList, Platform, StyleSheet } from 'react-native';
 import AppScreen from '../components/AppScreen';
 import AppCard from '../components/AppCard';
 
-import COLORS from '../config/colors';
+import APP_COLORS from '../config/colors';
 
 const LISTINGS = [
     {
@@ -44,7 +44,7 @@ const ListingsScreen = () => {
 const styles = StyleSheet.create({
     screen: {
         padding: Platform.OS === 'android' ? 10 : 20,
-        backgroundColor: COLORS.light,
+        backgroundColor: APP_COLORS.light,
     }
 });
 

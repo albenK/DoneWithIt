@@ -18,14 +18,14 @@ const AppOptionPicker = ({ icon, items, numberOfColumns = 1, onSelectItem, Picke
                     {!!icon && <MaterialCommunityIcons
                         name={icon}
                         size={20}
-                        color={DEFAULT_STYLES.colors.medium}
+                        color={DEFAULT_STYLES.APP_COLORS.medium}
                         style={styles.icon}
                     />}
-                    <AppText style={[styles.text, { color: selectedItem ? DEFAULT_STYLES.text.color : DEFAULT_STYLES.colors.medium}]}>{selectedItem ? selectedItem.label : placeholder}</AppText>
+                    <AppText style={[styles.text, { color: selectedItem ? DEFAULT_STYLES.text.color : DEFAULT_STYLES.APP_COLORS.medium}]}>{selectedItem ? selectedItem.label : placeholder}</AppText>
                     <MaterialCommunityIcons
                         name="chevron-down"
                         size={20}
-                        color={DEFAULT_STYLES.colors.medium}
+                        color={DEFAULT_STYLES.APP_COLORS.medium}
                     />
                 </View>
             </TouchableWithoutFeedback>
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
         padding: 15,
         borderRadius: 25,
         marginVertical: 10,
-        backgroundColor: DEFAULT_STYLES.colors.light,
+        backgroundColor: DEFAULT_STYLES.APP_COLORS.light,
     },
     icon: {
         marginRight: 10,

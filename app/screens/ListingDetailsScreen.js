@@ -3,7 +3,7 @@ import { View, Image, StyleSheet } from 'react-native';
 
 import AppText from '../components/AppText';
 import ListItem from '../components/ListItem';
-import COLORS from '../config/colors';
+import APP_COLORS from '../config/colors';
 
 const ListingDetailsScreen = () => {
     return (
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     },
     price: {
         marginVertical: 10,
-        color: COLORS.secondary,
+        color: APP_COLORS.secondary,
         fontWeight: 'bold'
     },
     title: {

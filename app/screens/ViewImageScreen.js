@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, View, StyleSheet } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 
-import COLORS from '../config/colors';
+import APP_COLORS from '../config/colors';
 
 const ViewImageScreen = (props) => {
     return (
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        backgroundColor: COLORS.black,
+        backgroundColor: APP_COLORS.black,
     },
     deleteIcon: {
         position: 'absolute',

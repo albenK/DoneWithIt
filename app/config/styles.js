@@ -1,12 +1,12 @@
 import { Platform } from "react-native";
 
-import COLORS from "./colors";
+import APP_COLORS from "./colors";
 
 export default {
-    colors: COLORS,
+    APP_COLORS: APP_COLORS,
     text: {
         fontSize: 18,
-        color: COLORS.dark,
+        color: APP_COLORS.dark,
         ...Platform.select({
             android: {
                 fontFamily: 'Roboto',
