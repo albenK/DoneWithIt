@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import AppScreen from './app/components/AppScreen';
 import AccountScreen from './app/screens/AccountScreen';
@@ -18,52 +18,17 @@ import AppImageInput from './app/components/AppImageInput';
 import AppImageInputList from './app/components/AppImageInputList';
 import AppText from './app/components/AppText';
 
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { Button } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 
-const Link = () => {
-  const navigation = useNavigation();
-  return (
-    <Button title="CLICK" onPress={() => navigation.navigate('TweetDetails')}/>
-  );
-};
-
-const Tweets = ({ navigation }) => {
-    return (
-      <AppScreen>
-        <AppText>Tweets</AppText>
-        <Link/>
-      </AppScreen>
-    );
-};
-
-const TweetDetails = () => {
-  return (
-    <AppScreen>
-      <AppText>Tweet Details</AppText>
-    </AppScreen>
-  );
-};  
-
-const Stack = createStackNavigator();
-const StackNavigator = () => {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name="Tweets" component={Tweets}/>
-      <Stack.Screen name="TweetDetails" component={TweetDetails}/>
-    </Stack.Navigator>
-  );
-};
-
+import AuthNavigator from './app/navigation/AuthNavigator';
 
 
 const App = () => {
 
   return (
-      <NavigationContainer>
-        <StackNavigator/>
-      </NavigationContainer>
+    <NavigationContainer>
+      <AuthNavigator/>
+    </NavigationContainer>
   );
 }
 
