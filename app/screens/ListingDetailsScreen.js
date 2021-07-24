@@ -5,13 +5,17 @@ import AppText from '../components/AppText';
 import ListItem from '../components/ListItem';
 import APP_COLORS from '../config/colors';
 
-const ListingDetailsScreen = () => {
+const ListingDetailsScreen = ({ route }) => {
+    /* route prop is being passed in here by react-navigation.
+    */
+    const listing = route.params.item;
+
     return (
         <View>
-            <Image style={styles.image} source={require('../assets/jacket.jpg')}/>
+            <Image style={styles.image} source={listing.image}/>
             <View style={styles.detailsContainer}>
-                <AppText style={styles.title}>Red jacket for sale</AppText>
-                <AppText style={styles.price}>$100</AppText>
+                <AppText style={styles.title}>{listing.title}</AppText>
+                <AppText style={styles.price}>{`\$${listing.price}`}</AppText>
                 <View style={styles.userContainer}>
                     <ListItem
                         image={require('../assets/mosh.jpg')}
