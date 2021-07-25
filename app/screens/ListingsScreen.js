@@ -5,6 +5,7 @@ import AppScreen from '../components/AppScreen';
 import AppCard from '../components/AppCard';
 
 import APP_COLORS from '../config/colors';
+import NAVIGATION_ROUTES from '../navigation/routes';
 
 const LISTINGS = [
     {
@@ -33,7 +34,7 @@ const ListingsScreen = ({ navigation }) => {
                             title={item.title}
                             subTitle={`$${item.price}`}
                             image={item.image}
-                            onPress={() => navigation.navigate('ListingDetailScreen', { item })}
+                            onPress={() => navigation.navigate(NAVIGATION_ROUTES.LISTING_DETAILS_SCREEN, { item })}
                         />
                     );
                 }}

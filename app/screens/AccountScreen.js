@@ -6,6 +6,7 @@ import ListItem from '../components/ListItem';
 import AppIcon from '../components/AppIcon';
 import APP_COLORS from '../config/colors';
 import ListItemSeperator from '../components/ListItemSeperator';
+import NAVIGATION_ROUTES from '../navigation/routes';
 
 const MENU_ITEMS = [
     {
@@ -14,7 +15,7 @@ const MENU_ITEMS = [
             name: 'format-list-bulleted',
             backgroundColor: APP_COLORS.primary,
         },
-        targetScreen: 'MessagesScreen' // TODO: Create a My Listings screen component.
+        targetScreen: NAVIGATION_ROUTES.MESSAGES_SCREEN // TODO: Create a My Listings screen component.
     },
     {
         title: 'My Messages',
@@ -22,7 +23,7 @@ const MENU_ITEMS = [
             name: 'email',
             backgroundColor: APP_COLORS.secondary,
         },
-        targetScreen: 'MessagesScreen'
+        targetScreen: NAVIGATION_ROUTES.MESSAGES_SCREEN
     }
 ];
 
