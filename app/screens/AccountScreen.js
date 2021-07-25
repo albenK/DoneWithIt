@@ -13,18 +13,20 @@ const MENU_ITEMS = [
         icon: {
             name: 'format-list-bulleted',
             backgroundColor: APP_COLORS.primary,
-        }
+        },
+        targetScreen: 'MessagesScreen' // TODO: Create a My Listings screen component.
     },
     {
         title: 'My Messages',
         icon: {
             name: 'email',
             backgroundColor: APP_COLORS.secondary,
-        }
+        },
+        targetScreen: 'MessagesScreen'
     }
 ];
 
-const AccountScreen = () => {
+const AccountScreen = ({ navigation }) => {
     return (
         <AppScreen style={styles.screen}>
             <View style={styles.container}>
@@ -45,6 +47,7 @@ const AccountScreen = () => {
                             <ListItem
                                 title={item.title}
                                 IconComponent={<AppIcon name={item.icon.name} backgroundColor={item.icon.backgroundColor}/>}
+                                onPress={() => navigation.navigate(item.targetScreen)}
                             />
                         );
                     }}
