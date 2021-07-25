@@ -8,6 +8,7 @@ const APP_NAVIGATION_THEME = {
         ...DefaultTheme.colors,
         primary: APP_COLORS.primary,
         background: APP_COLORS.white,
+        border: 'rgba(0, 0, 0, 0)'
     }
 };
 

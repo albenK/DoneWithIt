@@ -44,7 +44,7 @@ const ListingsScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     screen: {
-        padding: Platform.OS === 'android' ? 10 : 20,
+        paddingHorizontal: 10,
         backgroundColor: APP_COLORS.light,
     }
 });

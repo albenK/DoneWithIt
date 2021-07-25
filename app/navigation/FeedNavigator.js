@@ -11,9 +11,9 @@ const FeedNavigator = () => {
      We can swipe down from the top to dismiss the screen. 
      This only works on IOS. Default value for mode is "card"*/
     return (
-        <Stack.Navigator mode="modal">
+        <Stack.Navigator mode="modal" screenOptions={ { headerShown: false }}>
            <Stack.Screen name="ListingsScreen" component={ListingsScreen}/>
-           <Stack.Screen options={{ headerShown: false }} name="ListingDetailScreen" component={ListingDetailsScreen}/>
+           <Stack.Screen name="ListingDetailScreen" component={ListingDetailsScreen}/>
         </Stack.Navigator>
     );
 };
