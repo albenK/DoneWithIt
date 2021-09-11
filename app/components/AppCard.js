@@ -5,11 +5,11 @@ import AppText from './AppText';
 
 import APP_COLORS from '../config/colors';
 
-const AppCard = ({ title, subTitle, image, onPress }) => {
+const AppCard = ({ title, subTitle, imageUrl, onPress }) => {
     return (
         <TouchableOpacity onPress={onPress}>
             <View style={styles.card}>
-                <Image style={styles.image} source={image} />
+                <Image style={styles.image} source={{ uri: imageUrl }} />
                 <View style={styles.detailsContainer}>
                     <AppText style={styles.title} numberOfLines={1}>{title}</AppText>
                     <AppText style={styles.subTitle} numberOfLines={2}>{subTitle}</AppText>
