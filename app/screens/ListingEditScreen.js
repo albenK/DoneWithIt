@@ -7,6 +7,7 @@ import AppScreen from '../components/AppScreen';
 import AppCategoryPickerItem from '../components/AppCategoryPickerItem';
 import { AppForm, AppFormField, AppFormOptionPicker, AppSubmitButton } from '../components/forms';
 import AppFormImagePicker from '../components/forms/AppFormImagePicker';
+import LISTINGS_API from '../api/listings';
 
 import useLocation from '../hooks/useLocation';
 
@@ -32,6 +33,16 @@ const CATEGORIES = [
 const ListingEditScreen = () => {
     const location = useLocation();
 
+    const handleSubmit = async (formValues) => {
+        const newListing = { ...formValues, location: location };
+        const response = await LISTINGS_API.addListing(newListing);
+
+        if (!response.ok) {
+            return alert('Could not save the listing.');
+        }
+        alert('success!');
+    };
+
     return (
         <AppScreen style={styles.container}>
             <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
@@ -39,7 +50,7 @@ const ListingEditScreen = () => {
                     <AppForm
                         initialValues={{ images: [], title: '', price: '', description: '', category: null}}
                         validationSchema={validationSchema}
-                        onSubmit={(values) => { console.log('form values are ', values, ' location is ', location) }}
+                        onSubmit={handleSubmit}
                     >
                         <AppFormImagePicker name="images" />
 
