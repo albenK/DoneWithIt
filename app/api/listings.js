@@ -6,7 +6,7 @@ const getListings = () => {
     return apiClient.get(endpoint);
 };
 
-const addListing = (listing) => {
+const addListing = (listing, onUploadProgress) => {
     const formData = new FormData();
     formData.append('title', listing.title);
     formData.append('price', listing.price);
@@ -26,7 +26,11 @@ const addListing = (listing) => {
         formData.append('location', JSON.stringify(listing.location));
     }
 
-    return apiClient.post(endpoint,formData);
+    return apiClient.post(endpoint, formData, {
+        onUploadProgress: (progress) => {
+            onUploadProgress(progress.loaded/progress.total);   
+        } 
+    });
 };
 
 const LISTINGS_API = {

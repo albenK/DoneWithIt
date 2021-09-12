@@ -35,7 +35,9 @@ const ListingEditScreen = () => {
 
     const handleSubmit = async (formValues) => {
         const newListing = { ...formValues, location: location };
-        const response = await LISTINGS_API.addListing(newListing);
+        const response = await LISTINGS_API.addListing(newListing, (progress) => {
+            console.log('progress is ', progress);
+        });
 
         if (!response.ok) {
             return alert('Could not save the listing.');
