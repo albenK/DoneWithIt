@@ -9,28 +9,14 @@ import APP_COLORS from '../config/colors';
 import NAVIGATION_ROUTES from '../navigation/routes';
 import AppButton from '../components/AppButton';
 import LoadingSpinner from '../components/LoadingSpinner';
+import useApi from '../hooks/useApi';
 
 const ListingsScreen = ({ navigation }) => {
-    const [ listings, setListings ] = useState([]);
-    const [ hasError, setHasError ] = useState(false); // Don't care about the error message.
-    const [ isLoading, setIsLoading ] = useState(true);
+    const { data: listings, hasError, isLoading, request: loadListings } = useApi(LISTINGS_API.getListings);
 
     useEffect(() => {
-
         loadListings();
     }, []);
-
-    const loadListings = async () => {
-        setIsLoading(true);
-        const response = await LISTINGS_API.getListings();
-        setIsLoading(false);
-
-        if (!response.ok) {
-            return setHasError(true);
-        }
-        setHasError(false);
-        setListings(response.data);
-    };
 
     if (isLoading) {
         return (
