@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, FlatList, StyleSheet } from 'react-native';
+import { FlatList, StyleSheet } from 'react-native';
 
 import AppScreen from '../components/AppScreen';
 import AppText from '../components/AppText';
@@ -8,6 +8,7 @@ import LISTINGS_API from '../api/listings';
 import APP_COLORS from '../config/colors';
 import NAVIGATION_ROUTES from '../navigation/routes';
 import AppButton from '../components/AppButton';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const ListingsScreen = ({ navigation }) => {
     const [ listings, setListings ] = useState([]);
@@ -15,6 +16,7 @@ const ListingsScreen = ({ navigation }) => {
     const [ isLoading, setIsLoading ] = useState(true);
 
     useEffect(() => {
+
         loadListings();
     }, []);
 
@@ -30,17 +32,25 @@ const ListingsScreen = ({ navigation }) => {
         setListings(response.data);
     };
 
+    if (isLoading) {
+        return (
+            <AppScreen style={styles.screen}>
+                <LoadingSpinner visible/>
+            </AppScreen>
+        );
+    }
+
+    if (hasError) {
+        return (
+            <AppScreen style={[styles.screen, { justifyContent: 'center', alignItems: 'center'}]}>
+                <AppText>Couldn't retrieve the listings.</AppText>
+                <AppButton label="Retry" onPress={loadListings}/>
+            </AppScreen>
+        );
+    }
+
     return (
         <AppScreen style={styles.screen}>
-            { hasError && (
-                <>
-                    <AppText>Couldn't retrieve the listings.</AppText>
-                    <AppButton label="Retry" onPress={loadListings}/>
-                </>
-            )}
-
-            <ActivityIndicator animating={isLoading} size="large" color={APP_COLORS.primary}/>
-
             <FlatList
                 data={listings}
                 keyExtractor={item => item.id.toString()}
