@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, TouchableWithoutFeedback, View, Keyboard } from 'react-native';
 
 import * as Yup from 'yup';
@@ -7,6 +7,7 @@ import AppScreen from '../components/AppScreen';
 import AppCategoryPickerItem from '../components/AppCategoryPickerItem';
 import { AppForm, AppFormField, AppFormOptionPicker, AppSubmitButton } from '../components/forms';
 import AppFormImagePicker from '../components/forms/AppFormImagePicker';
+import UploadProgressScreen from './UploadProgressScreen';
 import LISTINGS_API from '../api/listings';
 
 import useLocation from '../hooks/useLocation';
@@ -32,13 +33,17 @@ const CATEGORIES = [
 ];
 const ListingEditScreen = () => {
     const location = useLocation();
+    const [ isUploadScreenVisible, setIsUploadScreenVisible ] = useState(false);
+    const [ progress, setProgress ] = useState(0);
 
     const handleSubmit = async (formValues) => {
+        setIsUploadScreenVisible(true);
         const newListing = { ...formValues, location: location };
         const response = await LISTINGS_API.addListing(newListing, (progress) => {
-            console.log('progress is ', progress);
+            setProgress(progress);
         });
-
+        setIsUploadScreenVisible(false);
+        setProgress(0);
         if (!response.ok) {
             return alert('Could not save the listing.');
         }
@@ -47,6 +52,8 @@ const ListingEditScreen = () => {
 
     return (
         <AppScreen style={styles.container}>
+            <UploadProgressScreen isVisible={isUploadScreenVisible} progress={progress}/>
+
             <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
                 <View style={styles.formWrapper}>
                     <AppForm
