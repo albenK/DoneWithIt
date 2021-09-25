@@ -37,13 +37,13 @@ const ListingEditScreen = () => {
     const [ progress, setProgress ] = useState(0);
 
     const handleSubmit = async (formValues) => {
+        setProgress(0);
         setIsUploadScreenVisible(true);
         const newListing = { ...formValues, location: location };
         const response = await LISTINGS_API.addListing(newListing, (progress) => {
             setProgress(progress);
         });
         setIsUploadScreenVisible(false);
-        setProgress(0);
         if (!response.ok) {
             return alert('Could not save the listing.');
         }
