@@ -36,23 +36,24 @@ const ListingEditScreen = () => {
     const [ isUploadScreenVisible, setIsUploadScreenVisible ] = useState(false);
     const [ progress, setProgress ] = useState(0);
 
-    const handleSubmit = async (formValues) => {
+    const handleSubmit = async (formValues, formikBag) => {
         setProgress(0);
         setIsUploadScreenVisible(true);
         const newListing = { ...formValues, location: location };
         const response = await LISTINGS_API.addListing(newListing, (progress) => {
             setProgress(progress);
         });
-        setIsUploadScreenVisible(false);
         if (!response.ok) {
+            setIsUploadScreenVisible(false);
             return alert('Could not save the listing.');
         }
-        alert('success!');
+        const resetForm = formikBag.resetForm;
+        resetForm();
     };
 
     return (
         <AppScreen style={styles.container}>
-            <UploadProgressScreen isVisible={isUploadScreenVisible} progress={progress}/>
+            <UploadProgressScreen isVisible={isUploadScreenVisible} onDone={() => setIsUploadScreenVisible(false)} progress={progress}/>
 
             <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
                 <View style={styles.formWrapper}>
